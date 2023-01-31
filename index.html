@@ -21,7 +21,7 @@ function RetrieveJoke(url, elementID){
         Request.open("GET", url);
 
         Request.onreadystatechange=function(){
-            if(Request.readystate==4 && Request.status==200){
+            if(Request.readystate==4){
                 console.log(Request.responseText);
                 RequestObj.innerHTML=Request.responseText;
             }
