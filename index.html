@@ -22,6 +22,7 @@ function RetrieveJoke(url, elementID){
 
         Request.onreadystatechange=function(){
             if(Request.readystate==4 && Request.status==200){
+                console.log(Request.responseText);
                 RequestObj.innerHTML=Request.responseText;
             }
         }
