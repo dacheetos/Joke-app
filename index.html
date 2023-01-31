@@ -18,14 +18,20 @@ function RetrieveJoke(url, elementID){
     if(Request){
         var RequestObj= document.getElementById(elementID);
 
-        Request.open("GET", url);
+        fetch(url, { method: "get" })
+        .then(async data => {
+            RequestObj.innerHTML = await data.text();
+        })
+        .catch(console.error);
 
-        Request.onreadystatechange=function(){
-            if(Request.readystate==4){
-                console.log(Request.responseText);
-                RequestObj.innerHTML=Request.responseText;
-            }
-        }
+        // Request.open("GET", url);
+
+        // Request.onreadystatechange=function(){
+        //     if(Request.readystate==4){
+        //         console.log(Request.responseText);
+        //         RequestObj.innerHTML=Request.responseText;
+        //     }
+        // }
     }
 }
 
@@ -34,14 +40,13 @@ function RetrieveJoke(url, elementID){
 
 <body>
     <h1> Where do bees go when they get married?</h1>
-    <button type="button" value="Fetch Answer" onsubmit="RetrieveJoke('https://dacheetos.github.io/honeymoon.txt','Target')"> ANSWERRR</button>
+    <button type="button" value="Answer" onclick="RetrieveJoke('https://dacheetos.github.io/honeymoon.txt','Target')"> Answer </button>
         <form>
             <input
               type="button"
-              value="Fetch Answer"
+              value="Fetch Answe"
               onclick="RetrieveJoke('https://dacheetos.github.io/honeymoon.txt', 'Target')" 
             >
-              
           </form>
    
     <div id="Target"> </div>
